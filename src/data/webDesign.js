@@ -1,6 +1,6 @@
-﻿import { getImgSrc } from "../utils/image";
+import { getImgSrc } from "../utils/image";
 import designImg from "../assets/images/affordable-web-design-Baroda-corporate-solutions.jpg";
-import ecommerceImg from "../assets/images/ecommerce-website-development-Vadodara-custom.jpg";
+import ecommerceImg from "../assets/images/ecommerce-website-development-vadodara-custom.jpg";
 import customImg from "../assets/images/custom-web-applications-Baroda-enterprise-solutions.jpg";
 
 export const bannerData = {
