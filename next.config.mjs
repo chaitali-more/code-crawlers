@@ -10,14 +10,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    optimizePackageImports: [],
-  },
-  turbopack: {
-    resolveAlias: {
-      'react-router-dom': './src/components/RouterCompat.jsx',
-    },
-  },
+  turbopack: {},
   webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/i,
