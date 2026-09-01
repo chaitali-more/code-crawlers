@@ -1,0 +1,194 @@
+﻿'use client';
+import { useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import { CheckCircle2, AlertTriangle, ArrowRight } from "lucide-react";
+import InnerBanner from "../components/ui/InnerBanner";
+import { setPageSEO } from "../utils/seo";
+
+export default function ThankYouPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const state = location.state;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    return setPageSEO({
+      title: "Thank You for Your Order | CodeCrawlers",
+      description: "Thank you for choosing CodeCrawlers. Your order has been placed successfully. Our technical team will reach out to you shortly to assist with your setup.",
+      keywords: "thank you page, order success, checkout complete, CodeCrawlers",
+      canonical: "https://www.codecrawlers.in/thank-you"
+    });
+  }, []);
+
+  if (!state) {
+    return (
+      <>
+        <InnerBanner
+          title="Thank You"
+          subtitle="Thank you for contacting us."
+          breadcrumbs={[
+            { label: "Web Hosting", href: "/windows-web-hosting-service-provider-baroda" },
+            { label: "Thank You" }
+          ]}
+        />
+        <div className="min-h-screen bg-white px-6 py-16 font-sans text-slate-900 sm:px-12 md:px-24">
+          <div className="mx-auto max-w-xl space-y-8 text-center">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-50 text-green-500">
+              <CheckCircle2 className="h-12 w-12" />
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-heading text-2xl font-extrabold text-slate-900 sm:text-3xl">
+                Thank You!
+              </h2>
+              <p className="mx-auto max-w-md text-sm leading-relaxed text-slate-500 sm:text-base">
+                We appreciate you reaching out to CodeCrawlers. If you have placed an order or submitted a message, our team will get back to you shortly.
+              </p>
+            </div>
+            <div className="pt-4">
+              <Link
+                to="/"
+                aria-label="Return to CodeCrawlers Agency Home Page"
+                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-lg text-sm transition-all duration-200 shadow-md cursor-pointer"
+              >
+                Back to Home Page
+              </Link>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  const {
+    orderId,
+    packageName,
+    grandTotal,
+    paymentMethod,
+    emailId,
+    domainName,
+    serverName,
+    isServerPlan,
+    from
+  } = state;
+
+  if (from === "contact") {
+    return (
+      <>
+        <InnerBanner
+          title="Thank You"
+          subtitle="Thank you for contacting us."
+          breadcrumbs={[
+            { label: "Contact Us", href: "/contact-webdesign-mobileapp-socialmedia-marketing-baroda" },
+            { label: "Thank You" }
+          ]}
+        />
+        <div className="min-h-screen bg-white px-6 py-16 font-sans text-slate-900 sm:px-12 md:px-24">
+          <div className="mx-auto max-w-xl space-y-8 text-center">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-50 text-green-500">
+              <CheckCircle2 className="h-12 w-12" />
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-heading text-2xl font-extrabold text-slate-900 sm:text-3xl">
+                Thank You for contacting us!
+              </h2>
+              <p className="mx-auto max-w-md text-sm leading-relaxed text-slate-500 sm:text-base">
+                We have received your message. Our consulting team will review it and get back to you shortly.
+              </p>
+            </div>
+            <div className="pt-4">
+              <Link
+                to="/"
+                aria-label="Return to CodeCrawlers Agency Home Page after contact"
+                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-lg text-sm transition-all duration-200 shadow-md cursor-pointer"
+              >
+                Back to Home Page
+              </Link>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  const displayName = packageName ? packageName.replace("Web Hosting - ", "") : "";
+
+  return (
+    <>
+      <InnerBanner
+        title="Thank You"
+        subtitle="Your hosting order has been placed successfully."
+        breadcrumbs={[
+          { label: "Web Hosting", href: "/windows-web-hosting-service-provider-baroda" },
+          { label: "Thank You" }
+        ]}
+      />
+
+      <div className="min-h-screen bg-white px-6 py-16 font-sans text-slate-900 sm:px-12 md:px-24">
+        <div className="mx-auto max-w-xl space-y-8 text-center">
+          
+          {/* Green checkmark circle */}
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-50 text-green-500">
+            <CheckCircle2 className="h-12 w-12" />
+          </div>
+
+          <div className="space-y-3">
+            <h2 className="font-heading text-2xl font-extrabold text-slate-900 sm:text-3xl">
+              Order Placed Successfully!
+            </h2>
+            <p className="mx-auto max-w-md text-sm leading-relaxed text-slate-500 sm:text-base">
+              Thank you for ordering with CodeCrawlers. We have received your order details and will setup your server/domain hosting shortly.
+            </p>
+          </div>
+
+          {/* Details Card */}
+          <div className="border-slate-150 space-y-4 rounded-2xl border bg-slate-50 p-6 text-left shadow-sm">
+            <div className="flex items-center justify-between text-xs font-bold tracking-wider text-slate-400 uppercase">
+              <span>Order Reference</span>
+              <span>Plan Details</span>
+            </div>
+            
+            <div className="flex items-start justify-between font-bold text-slate-900">
+              <span className="font-mono text-base text-[#0284c7]">{orderId}</span>
+              <span className="text-right text-sm">{displayName}</span>
+            </div>
+
+            <div className="h-[1px] w-full bg-slate-200" />
+
+            <div className="flex items-center justify-between text-sm text-slate-700">
+              <span>Total Amount due:</span>
+              <span className="font-mono text-base font-extrabold text-black">₹{grandTotal.toFixed(2)}</span>
+            </div>
+
+            <div className="flex items-center justify-between text-sm text-slate-700">
+              <span>Payment Gateway:</span>
+              <span className="font-extrabold text-slate-800">{paymentMethod}</span>
+            </div>
+
+            <div className="h-[1px] w-full bg-slate-200" />
+
+            <div className="text-center text-xs font-medium text-slate-500">
+              Primary server/domain assigned: <strong className="text-slate-700">{isServerPlan ? serverName : domainName}</strong>
+            </div>
+          </div>
+
+          <p className="mx-auto max-w-md text-xs leading-relaxed text-slate-500 sm:text-sm">
+            Our deployment desk will contact you via email at <strong className="text-slate-700">{emailId}</strong> to complete server verification and payment processing.
+          </p>
+
+          <div className="pt-4">
+            <Link
+              to="/windows-web-hosting-service-provider-baroda"
+              aria-label="Back to Web Hosting Solutions Service Page"
+              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-lg text-sm transition-all duration-200 shadow-md cursor-pointer"
+            >
+              Back to Hosting Solutions
+            </Link>
+          </div>
+
+        </div>
+      </div>
+    </>
+  );
+}
+
+
